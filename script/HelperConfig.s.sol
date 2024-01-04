@@ -17,7 +17,7 @@ contract HelperConfig is Script {
         } else if (block.chainid == 1) {
             activeNetworkConfig = getMainnetEthConfig();
         } else {
-            activeNetworkConfig = getOrCreateAnvilEthConfig();
+            activeNetworkConfig = getOrCreateAnvilConfig();
         }
     }
 
@@ -35,7 +35,7 @@ contract HelperConfig is Script {
         return EthConfig;
     }
 
-    function getOrCreateAnvilEthConfig() public returns (NetworkConfig memory) {
+    function getOrCreateAnvilConfig() public returns (NetworkConfig memory) {
         if (activeNetworkConfig.priceFeed != address(0)) {
             return activeNetworkConfig;
         }
