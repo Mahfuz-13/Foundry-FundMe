@@ -26,4 +26,13 @@ contract FundMeTest is Test {
         uint256 version = fundMe.getVersion();
         assertEq(version, 4);
     }
+
+    function testFundFailsWithoutEnoughEth() public {
+        vm.expectRevert();
+        fundMe.fund();
+    }
+
+    function testFundUpdateDataStructure() public {
+        fundMe.fund{value: 10e18}();
+    }
 }
